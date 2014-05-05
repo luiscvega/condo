@@ -1,0 +1,12 @@
+source "https://rubygems.org"
+
+gem "cuba"
+gem "cuba-contrib"
+gem "ohm"
+gem "ohm-contrib"
+gem "interactor"
+gem "shield"
+gem "mote"
+gem "rspec"
+gem "puma"
+gem "shotgun"
