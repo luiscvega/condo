@@ -11,7 +11,7 @@ gem "puma"
 gem "rack-protection"
 
 group :test do
-  gem "rspec"
+  gem "minitest-reporters"
 end
 
 group :development do
