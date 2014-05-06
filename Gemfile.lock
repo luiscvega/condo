@@ -2,6 +2,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     armor (0.0.3)
+    coderay (1.1.0)
     cuba (3.1.1)
       rack
     cuba-contrib (3.1.0)
@@ -9,6 +10,7 @@ GEM
     diff-lcs (1.2.5)
     hiredis (0.5.2)
     interactor (2.1.0)
+    method_source (0.8.2)
     mote (1.1.2)
     msgpack (0.5.8)
     nido (0.0.1)
@@ -18,9 +20,15 @@ GEM
       redic
     ohm-contrib (2.0.0)
       ohm (~> 2.0.0)
+    pry (0.9.12.4)
+      coderay (~> 1.0)
+      method_source (~> 0.8)
+      slop (~> 3.4)
     puma (2.8.2)
       rack (>= 1.1, < 2.0)
     rack (1.5.2)
+    rack-protection (1.5.1)
+      rack
     redic (1.1.1)
       hiredis
     rspec (2.14.1)
@@ -35,6 +43,7 @@ GEM
       armor
     shotgun (0.9)
       rack (>= 1.0)
+    slop (3.4.7)
 
 PLATFORMS
   ruby
@@ -46,7 +55,9 @@ DEPENDENCIES
   mote
   ohm
   ohm-contrib
+  pry
   puma
+  rack-protection
   rspec
   shield
   shotgun

@@ -7,6 +7,17 @@ gem "ohm-contrib"
 gem "interactor"
 gem "shield"
 gem "mote"
-gem "rspec"
 gem "puma"
-gem "shotgun"
+gem "rack-protection"
+
+group :test do
+  gem "rspec"
+end
+
+group :development do
+  gem "shotgun"
+end
+
+group :test, :development do
+  gem "pry"
+end

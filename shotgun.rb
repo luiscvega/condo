@@ -8,3 +8,6 @@ require "ohm/contrib"
 require "shield"
 require "puma"
 require "interactor"
+require "rack/protection"
+
+Dir["./models/**/*.rb"].each { |file| require file }

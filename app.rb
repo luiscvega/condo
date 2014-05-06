@@ -1,5 +1,8 @@
 require_relative "shotgun"
 
+Cuba.use Rack::Session::Cookie, secret: ENV[:SESSION_SECRET]
+Cuba.use Rack::Protection
+Cuba.use Rack::Protection::RemoteReferrer
 Cuba.use Rack::Static,
   urls: ["/js", "/css"],
   root: "public"
