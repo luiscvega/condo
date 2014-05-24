@@ -9,6 +9,7 @@ GEM
       rack
     cuba-contrib (3.1.0)
       cuba (~> 3.1)
+    dotenv (0.10.0)
     hiredis (0.5.2)
     interactor (2.1.0)
     method_source (0.8.2)
@@ -51,6 +52,7 @@ PLATFORMS
 DEPENDENCIES
   cuba
   cuba-contrib
+  dotenv
   interactor
   minitest-reporters
   mote

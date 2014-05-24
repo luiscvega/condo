@@ -6,15 +6,16 @@ gem "ohm"
 gem "ohm-contrib"
 gem "interactor"
 gem "shield"
-gem "mote"
 gem "puma"
 gem "rack-protection"
+gem "mote"
 
 group :test do
   gem "minitest-reporters"
 end
 
 group :development do
+  gem "dotenv"
   gem "shotgun"
 end
 
