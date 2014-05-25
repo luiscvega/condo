@@ -22,9 +22,9 @@
   </head>
   <body>
     <div class="container">
-      <div class="alert alert-{{flash.alert}}" ng-show="flash">
-        <button type="button" class="close" ng-click="flash = false">&times;</button>
-        {{flash.message}}
+      <div class="alert alert-info" ng-show="flash.get().length">
+        <button type="button" class="close" ng-click="flash.unset()">&times;</button>
+        {{flash.get()}}
       </div>
 
       <div class="main" ng-view></div>

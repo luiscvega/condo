@@ -14,17 +14,46 @@ app.config(function($routeProvider) {
   });
 });
 
-app.controller('SessionCtrl', function($scope, $http, $location, $rootScope) {
+app.factory('flash', function($rootScope) {
+  $rootScope.flashQueue = [];
+  $rootScope.currentFlash = '';
+
+  $rootScope.$on('$routeChangeSuccess', function() {
+    if ($rootScope.flashQueue.length > 0)
+      $rootScope.currentFlash = $rootScope.flashQueue.shift();
+    else
+      $rootScope.currentFlash = '';
+  });
+
+  return {
+    set: function(message) {
+      $rootScope.flashQueue.push(message);
+    },
+    get: function() {
+      return $rootScope.currentFlash;
+    },
+    now: function(message) {
+      $rootScope.currentFlash = message;
+    },
+    unset: function() {
+      $rootScope.currentFlash = '';
+    }
+  };
+});
+
+app.run(function($rootScope, flash) {
+  $rootScope.flash = flash;
+});
+
+app.controller('SessionCtrl', function($scope, $http, $location, flash) {
   $scope.submitLogin = function() {
     $http.post('/login', $scope.user).
       success(function(data, status, headers, config){
-        data.alert = 'success';
-        $rootScope.flash = data;
+        flash.set(data.message);
         $location.path("/");
       }).
       error(function(data, status, headers, config) {
-        data.alert = 'danger';
-        $rootScope.flash = data;
+        flash.now(data.message);
       });
   };
 
