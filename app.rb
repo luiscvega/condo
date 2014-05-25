@@ -1,5 +1,9 @@
 require_relative "shotgun"
 
+Cuba.plugin Shield::Helpers
+Cuba.plugin Cuba::Render
+Cuba.settings[:render][:template_enginge] = "erb"
+
 Cuba.use Rack::Session::Cookie, secret: ENV["SESSION_SECRET"]
 Cuba.use Rack::Protection
 Cuba.use Rack::Protection::RemoteReferrer

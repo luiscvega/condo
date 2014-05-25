@@ -19,7 +19,6 @@ GEM
       builder
       minitest (>= 5.0)
       ruby-progressbar
-    mote (1.1.2)
     msgpack (0.5.8)
     nido (0.0.1)
     ohm (2.0.0)
@@ -55,7 +54,6 @@ DEPENDENCIES
   dotenv
   interactor
   minitest-reporters
-  mote
   ohm
   ohm-contrib
   pry
