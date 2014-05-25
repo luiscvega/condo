@@ -7,7 +7,8 @@
     <title>Condo</title>
 
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -20,7 +21,13 @@
     <script src="js/main.js"></script>
   </head>
   <body>
-    <div class="container" ng-view>
+    <div class="container">
+      <div class="alert alert-{{flash.status}}" ng-show="flash">
+        <button type="button" class="close" ng-click="flash = false">&times;</button>
+        {{flash.message}}
+      </div>
+
+      <div class="main" ng-view></div>
     </div>
   </body>
 </html>
