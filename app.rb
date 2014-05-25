@@ -11,35 +11,33 @@ Cuba.use Rack::Static,
   urls: ["/js", "/css"],
   root: "public"
 
-Cuba.plugin Shield::Helpers
-Cuba.plugin Cuba::Mote
-
 Cuba.define do
+  on "templates" do
+    run TemplateRoutes
+  end
+
   on "login" do
     on post do
       data = req.body.read.dup
-      user = JSON.parse(data)
+      json = JSON.parse(data) if data
 
-      if admin = Admin.authenticate(user["email"], user["password"])
-        res.write("ok")
+      if json && login(Admin, json["email"], json["password"])
+        res.status = 200
+        res.write({message: "Successfully logged in!"}.to_json)
       else
         res.status = 401
-        res.write({status: "failed"}.to_json)
+        res.write({message: "Incorrect login details."}.to_json)
       end
     end
-
-    on get do
-      res.write partial("login")
-    end
   end
 
-  on "admin" do
-    run AdminRoutes
-  end
+  # on authenticated(Admin) do
+  #   run AdminRoutes
+  # end
 
-  on "tenants" do
-    run TenantRoutes
-  end
+  # on authenticated(Tenant) do
+  #   run TenantRoutes
+  # end
 
   on root do
     res.write view("index")
